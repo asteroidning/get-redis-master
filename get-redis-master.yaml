@@ -32,7 +32,9 @@ spec:
           value: 172.9.84.112
         - name: RELEASE
           value: cache-redis
-        image: harbor.linksoft.cn/base/redis-master:1.0
+        - name: SLEEP_TIME
+          value: 30
+        image: asteroidning/redis-master:1.0
         imagePullPolicy: Always
         name: redis-master
         resources: {}

@@ -1,0 +1,24 @@
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: redis-master-reader
+rules:
+- apiGroups:
+  - '*'
+  resources:
+  - '*'
+  verbs: ["get", "list","update","patch","create"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: redis-master
+  namespace: default
+subjects:
+- kind: ServiceAccount
+  name: redis-master
+  namespace: default
+roleRef:
+  kind: ClusterRole
+  name: redis-master-reader
+  apiGroup: rbac.authorization.k8s.io
